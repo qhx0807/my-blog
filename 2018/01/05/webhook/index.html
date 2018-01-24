@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="css," />
+  <meta name="keywords" content="webhook,git,github," />
 
 
 
@@ -83,18 +83,20 @@
 
 
 
-<meta name="description" content="在多数移动端上css中的1px并不等于设备的1px。不同的手机有不同的像素密度。Window.devicePixelRatio。 @media only screen and (-webkit-min-device-pixel-ratio:1){}@media only screen and (-webkit-min-device-pixel-ratio:2){}@media only scree">
-<meta name="keywords" content="css">
+<meta name="description" content="实现：服务器自动拉取push到github上的项目。github支持Webhooks及大量的第三方服务，可以很好得对repo的push等操作做出反应。当github收到repo的操作行为时，会向指定的url发送一个带有描述操作内容的post请求。 1. 对指定repo添加webhook，指向服务器上的接口。  Payload URL: 服务器地址，接收POST请求 Content type： 默认">
+<meta name="keywords" content="webhook,git,github">
 <meta property="og:type" content="article">
-<meta property="og:title" content="手机端1px边框">
-<meta property="og:url" content="http://yoursite.com/2017/04/05/1px边框/index.html">
+<meta property="og:title" content="webhook 自动部署项目">
+<meta property="og:url" content="http://yoursite.com/2018/01/05/webhook/index.html">
 <meta property="og:site_name" content="Lonely Hero">
-<meta property="og:description" content="在多数移动端上css中的1px并不等于设备的1px。不同的手机有不同的像素密度。Window.devicePixelRatio。 @media only screen and (-webkit-min-device-pixel-ratio:1){}@media only screen and (-webkit-min-device-pixel-ratio:2){}@media only scree">
+<meta property="og:description" content="实现：服务器自动拉取push到github上的项目。github支持Webhooks及大量的第三方服务，可以很好得对repo的push等操作做出反应。当github收到repo的操作行为时，会向指定的url发送一个带有描述操作内容的post请求。 1. 对指定repo添加webhook，指向服务器上的接口。  Payload URL: 服务器地址，接收POST请求 Content type： 默认">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-05-17T15:01:40.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/01/05/webhook/webhook.png">
+<meta property="og:updated_time" content="2018-01-24T04:07:55.019Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="手机端1px边框">
-<meta name="twitter:description" content="在多数移动端上css中的1px并不等于设备的1px。不同的手机有不同的像素密度。Window.devicePixelRatio。 @media only screen and (-webkit-min-device-pixel-ratio:1){}@media only screen and (-webkit-min-device-pixel-ratio:2){}@media only scree">
+<meta name="twitter:title" content="webhook 自动部署项目">
+<meta name="twitter:description" content="实现：服务器自动拉取push到github上的项目。github支持Webhooks及大量的第三方服务，可以很好得对repo的push等操作做出反应。当github收到repo的操作行为时，会向指定的url发送一个带有描述操作内容的post请求。 1. 对指定repo添加webhook，指向服务器上的接口。  Payload URL: 服务器地址，接收POST请求 Content type： 默认">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/05/webhook/webhook.png">
 
 
 
@@ -124,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/05/1px边框/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/05/webhook/"/>
 
 
 
 
 
-  <title>手机端1px边框 | Lonely Hero</title>
+  <title>webhook 自动部署项目 | Lonely Hero</title>
   
 
 
@@ -297,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/05/1px边框/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/05/webhook/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qhx0807">
@@ -314,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">手机端1px边框</h1>
+          <h1 class="post-title" itemprop="name headline">webhook 自动部署项目</h1>
         
 
         <div class="post-meta">
@@ -326,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T20:36:00+08:00">
-                2017-04-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T11:18:45+08:00">
+                2018-01-05
               </time>
             
 
@@ -349,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
                   </a>
                 </span>
 
@@ -368,8 +370,8 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               
-                <a href="/2017/04/05/1px边框/#SOHUCS" itemprop="discussionUrl">
-                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/04/05/1px边框/" itemprop="commentsCount"></span>
+                <a href="/2018/01/05/webhook/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/01/05/webhook/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -377,7 +379,7 @@
 
           
           
-             <span id="/2017/04/05/1px边框/" class="leancloud_visitors" data-flag-title="手机端1px边框">
+             <span id="/2018/01/05/webhook/" class="leancloud_visitors" data-flag-title="webhook 自动部署项目">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -439,20 +441,20 @@
       
 
       
-        <p>在多数移动端上css中的1px并不等于设备的1px。不同的手机有不同的像素密度。Window.devicePixelRatio。</p>
-<p><code>@media only screen and (-webkit-min-device-pixel-ratio:1){}</code><br><code>@media only screen and (-webkit-min-device-pixel-ratio:2){}</code><br><code>@media only screen and (-webkit-min-device-pixel-ratio:2.5){}</code><br><code>@media only screen and (-webkit-min-device-pixel-ratio:3){}</code></p>
-<ol>
-<li><p>背景渐变：设置1px渐变背景，0.5可见，0.5透明。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.background-gradient-1px</span> &#123;</span><br><span class="line"><span class="attribute">background</span>:</span><br><span class="line"><span class="built_in">linear-gradient</span>(180deg, black, black 50%, transparent 50%) top    left  / <span class="number">100%</span> <span class="number">1px</span> no-repeat,</span><br><span class="line"><span class="built_in">linear-gradient</span>(90deg,  black, black 50%, transparent 50%) top    right / <span class="number">1px</span> <span class="number">100%</span> no-repeat,</span><br><span class="line"><span class="built_in">linear-gradient</span>(0,      black, black 50%, transparent 50%) bottom right / <span class="number">100%</span> <span class="number">1px</span> no-repeat,</span><br><span class="line"><span class="built_in">linear-gradient</span>(-90deg, black, black 50%, transparent 50%) bottom left  / <span class="number">1px</span> <span class="number">100%</span> no-repeat;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*简写*/</span></span><br><span class="line"><span class="selector-class">.background-gradient-1px</span>&#123;</span><br><span class="line"><span class="attribute">background</span>: <span class="built_in">-webkit-gradient</span>(linear, left top, left bottom, color-stop(.5, transparent), <span class="built_in">color-stop</span>(.5, #c8c7cc), <span class="built_in">to</span>(#c8c7cc)) left bottom repeat-x;</span><br><span class="line"><span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">1px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用box-shadow阴影实现。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box-shadow-1px</span> &#123;</span><br><span class="line">	<span class="attribute">box-shadow</span>: inset <span class="number">0px</span> -<span class="number">1px</span> <span class="number">1px</span> -<span class="number">1px</span> <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>伪类 + transform 实现。<br>一条边框</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.scale-1px</span>&#123;</span><br><span class="line"><span class="attribute">position</span>: relative;</span><br><span class="line"><span class="attribute">border</span>:none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.scale-1px</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line"><span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line"><span class="attribute">position</span>: absolute;</span><br><span class="line"><span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">background</span>: <span class="number">#000</span>;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line"><span class="attribute">-webkit-transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line"><span class="attribute">-webkit-transform-origin</span>: <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line"><span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>四条边框，可设置border-radius<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.scale-1px</span>&#123;</span><br><span class="line"><span class="attribute">position</span>: relative;</span><br><span class="line"><span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line"><span class="attribute">border</span>:none;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.scale-1px</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line"><span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line"><span class="attribute">position</span>: absolute;</span><br><span class="line"><span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line"><span class="attribute">-webkit-box-sizing</span>: border-box;</span><br><span class="line"><span class="attribute">box-sizing</span>: border-box;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">200%</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">200%</span>;</span><br><span class="line"><span class="attribute">-webkit-transform</span>: <span class="built_in">scale</span>(0.5);</span><br><span class="line"><span class="attribute">transform</span>: <span class="built_in">scale</span>(0.5);</span><br><span class="line"><span class="attribute">-webkit-transform-origin</span>: left top;</span><br><span class="line"><span class="attribute">transform-origin</span>: left top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>实现：服务器自动拉取push到github上的项目。<br>github支持Webhooks及大量的第三方服务，可以很好得对repo的push等操作做出反应。<br>当github收到repo的操作行为时，会向指定的url发送一个带有描述操作内容的post请求。</p>
+<h4 id="1-对指定repo添加webhook，指向服务器上的接口。"><a href="#1-对指定repo添加webhook，指向服务器上的接口。" class="headerlink" title="1. 对指定repo添加webhook，指向服务器上的接口。"></a>1. 对指定repo添加webhook，指向服务器上的接口。</h4><p><img src="/2018/01/05/webhook/webhook.png" alt="webhook"></p>
+<ul>
+<li>Payload URL: 服务器地址，接收POST请求</li>
+<li>Content type： 默认</li>
+<li>Secret： 自定义加密字符串</li>
+</ul>
+<h4 id="2-服务器上编写代码接收请求"><a href="#2-服务器上编写代码接收请求" class="headerlink" title="2. 服务器上编写代码接收请求"></a>2. 服务器上编写代码接收请求</h4><p>全局安装 <code>github-webhook-handler</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g github-webhook-handler</span><br></pre></td></tr></table></figure>
+<p>创建 <code>deploy.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> createHandler = <span class="built_in">require</span>(<span class="string">'github-webhook-handler'</span>)</span><br><span class="line"><span class="keyword">var</span> handler = createHandler(&#123; <span class="attr">path</span>: <span class="string">'**服务器上项目文件目录**'</span>, <span class="attr">secret</span>: <span class="string">'**Github上设置的Secret**'</span> &#125;) </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">run_cmd</span>(<span class="params">cmd, args, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">'child_process'</span>).spawn;</span><br><span class="line">  <span class="keyword">var</span> child = spawn(cmd, args);</span><br><span class="line">  <span class="keyword">var</span> resp = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">  child.stdout.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">buffer</span>) </span>&#123; resp += buffer.toString(); &#125;);</span><br><span class="line">  child.stdout.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; callback (resp) &#125;);</span><br><span class="line">&#125;</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  handler(req, res, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    res.statusCode = <span class="number">404</span></span><br><span class="line">    res.end(<span class="string">'no such location'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;).listen(<span class="number">7777</span>)</span><br><span class="line"></span><br><span class="line">handler.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">'Error:'</span>, err.message)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">handler.on(<span class="string">'push'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Received a push event for %s to %s'</span>,</span><br><span class="line">    event.payload.repository.name,</span><br><span class="line">    event.payload.ref);</span><br><span class="line">  run_cmd(<span class="string">'sh'</span>, [<span class="string">'./deploy.sh'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">text</span>)</span>&#123; <span class="built_in">console</span>.log(text) &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>创建 <code>deploy.sh</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">LOG_FILE=<span class="string">"./blog_deploy.log"</span></span><br><span class="line"></span><br><span class="line">date &gt;&gt; <span class="string">"<span class="variable">$LOG_FILE</span>"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Start deployment"</span> &gt;&gt;<span class="string">"<span class="variable">$LOG_FILE</span>"</span></span><br><span class="line"><span class="built_in">cd</span> ../blog</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"pulling source code..."</span> &gt;&gt; <span class="string">"<span class="variable">$LOG_FILE</span>"</span></span><br><span class="line">git checkout gh-pages</span><br><span class="line">git pull origin gh-pages</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Finished."</span> &gt;&gt;<span class="string">"<span class="variable">$LOG_FILE</span>"</span></span><br><span class="line"><span class="built_in">echo</span> &gt;&gt; <span class="variable">$LOG_FILE</span></span><br></pre></td></tr></table></figure>
+<h4 id="把服务器跑起来"><a href="#把服务器跑起来" class="headerlink" title="把服务器跑起来"></a>把服务器跑起来</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node deploy.js</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -499,7 +501,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/css/" rel="tag"># css</a>
+            <a href="/tags/webhook/" rel="tag"># webhook</a>
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+            <a href="/tags/github/" rel="tag"># github</a>
           
         </div>
       
@@ -512,8 +518,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/31/字符串/" rel="next" title="JavaScript字符串">
-                <i class="fa fa-chevron-left"></i> JavaScript字符串
+              <a href="/2018/01/01/2018一揽子计划/" rel="next" title="2018年的一揽子计划">
+                <i class="fa fa-chevron-left"></i> 2018年的一揽子计划
               </a>
             
           </div>
@@ -521,10 +527,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/20/树形对象/" rel="prev" title="JS解析树形对象">
-                JS解析树形对象 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -619,8 +621,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -712,6 +723,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-对指定repo添加webhook，指向服务器上的接口。"><span class="nav-number">1.</span> <span class="nav-text">1. 对指定repo添加webhook，指向服务器上的接口。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-服务器上编写代码接收请求"><span class="nav-number">2.</span> <span class="nav-text">2. 服务器上编写代码接收请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#把服务器跑起来"><span class="nav-number">3.</span> <span class="nav-text">把服务器跑起来</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

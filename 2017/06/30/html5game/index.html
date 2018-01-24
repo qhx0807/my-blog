@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="javascript,html5,css,velocity," />
+  <meta name="keywords" content="css,javascript,html5,velocity," />
 
 
 
@@ -84,23 +84,23 @@
 
 
 <meta name="description" content="需求：实现一个微信公众号营销活动H5接金币小游戏，类似于大富翁。 演示地址 启动页：">
-<meta name="keywords" content="javascript,html5,css,velocity">
+<meta name="keywords" content="css,javascript,html5,velocity">
 <meta property="og:type" content="article">
 <meta property="og:title" content="html5game">
 <meta property="og:url" content="http://yoursite.com/2017/06/30/html5game/index.html">
 <meta property="og:site_name" content="Lonely Hero">
 <meta property="og:description" content="需求：实现一个微信公众号营销活动H5接金币小游戏，类似于大富翁。 演示地址 启动页：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/06/30/html5game/2017/06/30/html5game/index.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/30/html5game/index.jpg">
 <meta property="og:image" content="http://yoursite.com/2017/06/30/html5game/2017/06/30/html5game/run.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/06/30/html5game/2017/06/30/html5game/design.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/06/30/html5game/2017/06/30/html5game/impact.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/06/30/html5game/2017/06/30/html5game/down.png">
-<meta property="og:updated_time" content="2017-07-17T15:30:40.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/06/30/html5game/design.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/30/html5game/impact.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/06/30/html5game/down.png">
+<meta property="og:updated_time" content="2018-01-24T02:23:51.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="html5game">
 <meta name="twitter:description" content="需求：实现一个微信公众号营销活动H5接金币小游戏，类似于大富翁。 演示地址 启动页：">
-<meta name="twitter:image" content="http://yoursite.com/2017/06/30/html5game/2017/06/30/html5game/index.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/06/30/html5game/index.jpg">
 
 
 
@@ -446,8 +446,7 @@
 
       
         <p>需求：实现一个微信公众号营销活动H5接金币小游戏，类似于大富翁。 <a href="http://qhxing.site/game/game.html" target="_blank" rel="noopener">演示地址</a></p>
-<p>启动页：</p>
-<img src="/2017/06/30/html5game/2017/06/30/html5game/index.jpg">
+<p>启动页：<br><img src="/2017/06/30/html5game/index.jpg" alt=""></p>
 <a id="more"></a>
 <p>游戏中：</p>
 <img src="/2017/06/30/html5game/2017/06/30/html5game/run.jpg">
@@ -460,7 +459,7 @@
 <li>物体下落到屏幕下方后一定要移除 </li>
 <li>计时器、随机数、touch等…</li>
 </ol>
-<img src="/2017/06/30/html5game/2017/06/30/html5game/design.jpg">
+<p><img src="/2017/06/30/html5game/design.jpg" alt=""></p>
 <h4 id="选择实现动画的方式"><a href="#选择实现动画的方式" class="headerlink" title="选择实现动画的方式"></a>选择实现动画的方式</h4><ol>
 <li><p>css动画 top++ </p>
  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">keyframes</span> fallDown&#123;</span><br><span class="line">    0%   &#123;<span class="attribute">top</span>:<span class="number">0</span>&#125;</span><br><span class="line">    100% &#123;<span class="attribute">top</span>:<span class="number">100%</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.elem</span>&#123;</span><br><span class="line">    <span class="attribute">animation</span>: fallDown <span class="number">3s</span> linear;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -474,13 +473,12 @@
 <p> 而且提供了动画开始、执行中，执行完成的回调函数。</p>
 </li>
 </ol>
-<h4 id="碰撞检测"><a href="#碰撞检测" class="headerlink" title="碰撞检测"></a>碰撞检测</h4><img src="/2017/06/30/html5game/2017/06/30/html5game/impact.jpg">
+<h4 id="碰撞检测"><a href="#碰撞检测" class="headerlink" title="碰撞检测"></a>碰撞检测</h4><p><img src="/2017/06/30/html5game/impact.jpg" alt=""></p>
 <p>如图所示，碰不上的情况只有四种，其他情况都是发生了碰撞。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t_1 = div1.offsetTop, </span><br><span class="line">    l_1 = div1.offsetLeft,</span><br><span class="line">    r_1 = div1.offsetLeft + div1.offsetWidth,</span><br><span class="line">    b_1 = div1.offsetTop + div1.offsetHeight;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> t_0 = div2.offsetTop,</span><br><span class="line">    l_0 = div2.offsetLeft;</span><br><span class="line">    r_0 = div2.offsetLeft + div2.offsetWidth,</span><br><span class="line">    b_0 = div2.offsetTop + div2.offsetHeight;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(b_1&lt;t_0 || l_1&gt;r_0 || t_1&gt;b_0 || r_1&lt;l_0)&#123;</span><br><span class="line">    <span class="comment">//未发生碰撞</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//发生碰撞</span></span><br><span class="line">    <span class="comment">//foo() 积分 + 或 -</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="产生随机掉落物体"><a href="#产生随机掉落物体" class="headerlink" title="产生随机掉落物体"></a>产生随机掉落物体</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> factory = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dropTimer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> left = <span class="built_in">Math</span>.random()*(win_width<span class="number">-1.9</span>*rootsizePx); <span class="comment">//距离左边的宽度</span></span><br><span class="line">        <span class="keyword">var</span> delay = <span class="built_in">Math</span>.random()*<span class="number">2000</span>; <span class="comment">//延迟</span></span><br><span class="line">        <span class="keyword">var</span> index = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*dropConfig.length); </span><br><span class="line">        <span class="keyword">var</span> imgObj = dropConfig[index]; <span class="comment">// 从物体数组里随机选择一个</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(duration&gt;<span class="number">2000</span>)&#123;</span><br><span class="line">            duration -= <span class="number">20</span>   <span class="comment">//动画执行时间</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> htmlStr = <span class="string">'&lt;img src="'</span>+imgObj.path+<span class="string">'" data-score="'</span>+imgObj.score+<span class="string">'" data-delay="'</span>+delay+<span class="string">'" data-duration="'</span>+duration+<span class="string">'" class="dropDown" style="left:'</span>+left+<span class="string">'px;width:'</span>+imgObj.width+<span class="string">'"/&gt;'</span>;</span><br><span class="line"></span><br><span class="line">        $(<span class="string">"#game"</span>).append(htmlStr);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用动画函数</span></span><br><span class="line"></span><br><span class="line">    &#125;, <span class="number">500</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="touch-时间绑定"><a href="#touch-时间绑定" class="headerlink" title="touch 时间绑定"></a>touch 时间绑定</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> touchstartFoo = <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</span><br><span class="line">    evt.preventDefault();</span><br><span class="line">    $(<span class="string">"#npc"</span>).css(<span class="string">"left"</span>,evt.touches[<span class="number">0</span>].pageX - $(<span class="string">"#npc"</span>)[<span class="number">0</span>].offsetWidth/<span class="number">2</span> + <span class="string">'px'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> touchmoveFoo = <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</span><br><span class="line">   evt.preventDefault();</span><br><span class="line">   $(<span class="string">"#npc"</span>).css(<span class="string">"left"</span>,evt.touches[<span class="number">0</span>].pageX - $(<span class="string">"#npc"</span>)[<span class="number">0</span>].offsetWidth/<span class="number">2</span> + <span class="string">'px'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> touchendFoo = <span class="function"><span class="keyword">function</span> (<span class="params">evt</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bindEvents = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">"#game"</span>).addEventListener(<span class="string">'touchstart'</span>, touchstartFoo, <span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">"#game"</span>).addEventListener(<span class="string">'touchmove'</span>, touchmoveFoo, <span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">document</span>.querySelector(<span class="string">"#game"</span>).addEventListener(<span class="string">'touchend'</span>, touchendFoo, <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2017/06/30/html5game/2017/06/30/html5game/down.png">
-<p>在微信中，下拉网页会出现上面的情况，如果不想看见这个东西，可以使用：</p>
+<p><img src="/2017/06/30/html5game/down.png" alt=""><br>在微信中，下拉网页会出现上面的情况，如果不想看见这个东西，可以使用：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'touchstart'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    event.preventDefault()</span><br><span class="line">    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
       
@@ -528,11 +526,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/css/" rel="tag"># css</a>
+          
             <a href="/tags/javascript/" rel="tag"># javascript</a>
           
             <a href="/tags/html5/" rel="tag"># html5</a>
-          
-            <a href="/tags/css/" rel="tag"># css</a>
           
             <a href="/tags/velocity/" rel="tag"># velocity</a>
           
@@ -557,8 +555,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/09/01/复制/" rel="prev" title="html5game">
-                html5game <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/01/复制/" rel="prev" title="JavaScript复制">
+                JavaScript复制 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -683,7 +681,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -694,7 +692,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -705,7 +703,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
