@@ -7,7 +7,7 @@ categories: 前端
 
 HTML5 canvas粒子背景效果
 
-{% asset_img GIF.gif %}
+![](GIF.gif)
 
 <!-- more -->
 

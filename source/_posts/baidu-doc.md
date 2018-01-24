@@ -7,8 +7,8 @@ categories: 前端
 
 #### 百度云文档服务，在线查看各种文档，移动端友好。
 
-{% asset_img 1.jpg %}
-{% asset_img 2.jpg %}
+![](1.jpg)
+![](2.jpg)
 
 ```html
 <!DOCTYPE html>
