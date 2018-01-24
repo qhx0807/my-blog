@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="timeago.js 官方文档 是一个非常简洁、轻量级、不到 2kb 的很简洁的 Javascript 库，用来将 datetime 时间转化成类似于* 时间前的描述字符串，例如：“3小时前”。  支持自动实时更新 引入1&amp;lt;script src=&quot;dist/timeago.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt; 123import timeago from &apos;timeago.">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="timeago.js 使用笔记&amp;源码阅读分析">
+<meta property="og:url" content="http://yoursite.com/2017/06/09/timeago/index.html">
+<meta property="og:site_name" content="Lonely Hero">
+<meta property="og:description" content="timeago.js 官方文档 是一个非常简洁、轻量级、不到 2kb 的很简洁的 Javascript 库，用来将 datetime 时间转化成类似于* 时间前的描述字符串，例如：“3小时前”。  支持自动实时更新 引入1&amp;lt;script src=&quot;dist/timeago.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt; 123import timeago from &apos;timeago.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-04T14:15:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="timeago.js 使用笔记&amp;源码阅读分析">
+<meta name="twitter:description" content="timeago.js 官方文档 是一个非常简洁、轻量级、不到 2kb 的很简洁的 Javascript 库，用来将 datetime 时间转化成类似于* 时间前的描述字符串，例如：“3小时前”。  支持自动实时更新 引入1&amp;lt;script src=&quot;dist/timeago.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt; 123import timeago from &apos;timeago.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/09/timeago/"/>
+
+
+
+
+
+  <title>timeago.js 使用笔记&源码阅读分析 | Lonely Hero</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lonely Hero</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            照片
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-birthday">
+          <a href="/birthday" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-birthday-cake"></i> <br />
+            
+            小白杨 <span style="color:red">^_^</span>
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/09/timeago/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="qhx0807">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://os70o8m36.bkt.clouddn.com/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lonely Hero">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">timeago.js 使用笔记&源码阅读分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T21:52:38+08:00">
+                2017-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              
+                <a href="/2017/06/09/timeago/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/06/09/timeago/" itemprop="commentsCount"></span>
+                </a>
+              
+            
+          
+
+          
+          
+             <span id="/2017/06/09/timeago/" class="leancloud_visitors" data-flag-title="timeago.js 使用笔记&源码阅读分析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>timeago.js <a href="https://github.com/mzabriskie/axios/" target="_blank" rel="noopener">官方文档</a> 是一个非常简洁、轻量级、不到 2kb 的很简洁的 Javascript 库，用来将 datetime 时间转化成类似于<em>*</em> 时间前的描述字符串，例如：“3小时前”。</p>
+</blockquote>
+<p>支持自动实时更新</p>
+<h5 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"dist/timeago.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> timeago <span class="keyword">from</span> <span class="string">'timeago.js'</span>;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">var</span> timeago = <span class="built_in">require</span>(<span class="string">"timeago.js"</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"need_to_be_rendered"</span> <span class="attr">data-timeago</span>=<span class="string">"2016-06-30 09:20:00"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timeagoInstance = timeago();</span><br><span class="line">timeagoInstance.render(<span class="built_in">document</span>.querySelectorAll(<span class="string">'.need_to_be_rendered'</span>), <span class="string">'zh_CN'</span>);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h5 id="其他使用方式"><a href="#其他使用方式" class="headerlink" title="其他使用方式"></a>其他使用方式</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timeago = timeago();</span><br><span class="line">timeago.format(<span class="string">'2017-06-09s'</span>)</span><br><span class="line"><span class="comment">//or</span></span><br><span class="line">timeago().format(<span class="built_in">Date</span>.now() - <span class="number">11</span> * <span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span>); <span class="comment">// will get '11 hours ago'</span></span><br></pre></td></tr></table></figure>
+<h5 id="源码-250lins"><a href="#源码-250lins" class="headerlink" title="源码(250lins)"></a>源码(250lins)</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Copyright (c) 2016 hustcc</span></span><br><span class="line"><span class="comment"> * License: MIT</span></span><br><span class="line"><span class="comment"> * Version: v3.0.0</span></span><br><span class="line"><span class="comment"> * https://github.com/hustcc/timeago.js</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"><span class="comment">/* jshint expr: true */</span></span><br><span class="line">!<span class="function"><span class="keyword">function</span> (<span class="params">root, factory</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">module</span> === <span class="string">'object'</span> &amp;&amp; <span class="built_in">module</span>.exports) &#123;</span><br><span class="line">    <span class="built_in">module</span>.exports = factory(root); <span class="comment">// nodejs support</span></span><br><span class="line">    <span class="built_in">module</span>.exports[<span class="string">'default'</span>] = <span class="built_in">module</span>.exports; <span class="comment">// es6 support</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    root.timeago = factory(root);</span><br><span class="line">&#125;(<span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span> ? <span class="built_in">window</span> : <span class="keyword">this</span>,</span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> indexMapEn = <span class="string">'second_minute_hour_day_week_month_year'</span>.split(<span class="string">'_'</span>),</span><br><span class="line">    indexMapZh = <span class="string">'秒_分钟_小时_天_周_月_年'</span>.split(<span class="string">'_'</span>),</span><br><span class="line">    <span class="comment">// build-in locales: en &amp; zh_CN</span></span><br><span class="line">    locales = &#123;</span><br><span class="line">      <span class="string">'en'</span>: <span class="function"><span class="keyword">function</span>(<span class="params">number, index</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index === <span class="number">0</span>) <span class="keyword">return</span> [<span class="string">'just now'</span>, <span class="string">'right now'</span>];</span><br><span class="line">        <span class="keyword">var</span> unit = indexMapEn[<span class="built_in">parseInt</span>(index / <span class="number">2</span>)];</span><br><span class="line">        <span class="keyword">if</span> (number &gt; <span class="number">1</span>) unit += <span class="string">'s'</span>;</span><br><span class="line">        <span class="keyword">return</span> [number + <span class="string">' '</span> + unit + <span class="string">' ago'</span>, <span class="string">'in '</span> + number + <span class="string">' '</span> + unit];</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">'zh_CN'</span>: <span class="function"><span class="keyword">function</span>(<span class="params">number, index</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (index === <span class="number">0</span>) <span class="keyword">return</span> [<span class="string">'刚刚'</span>, <span class="string">'片刻后'</span>];</span><br><span class="line">        <span class="keyword">var</span> unit = indexMapZh[<span class="built_in">parseInt</span>(index / <span class="number">2</span>)];</span><br><span class="line">        <span class="keyword">return</span> [number + unit + <span class="string">'前'</span>, number + unit + <span class="string">'后'</span>];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// second, minute, hour, day, week, month, year(365 days)</span></span><br><span class="line">    SEC_ARRAY = [<span class="number">60</span>, <span class="number">60</span>, <span class="number">24</span>, <span class="number">7</span>, <span class="number">365</span>/<span class="number">7</span>/<span class="number">12</span>, <span class="number">12</span>],</span><br><span class="line">    SEC_ARRAY_LEN = <span class="number">6</span>,</span><br><span class="line">    ATTR_DATETIME = <span class="string">'datetime'</span>,</span><br><span class="line">    ATTR_DATA_TID = <span class="string">'data-tid'</span>,</span><br><span class="line">    timers = &#123;&#125;; <span class="comment">// real-time render timers</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// format Date / string / timestamp to Date instance.</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">toDate</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (input <span class="keyword">instanceof</span> <span class="built_in">Date</span>) <span class="keyword">return</span> input;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">isNaN</span>(input)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(toInt(input));</span><br><span class="line">    <span class="keyword">if</span> (<span class="regexp">/^\d+$/</span>.test(input)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(toInt(input));</span><br><span class="line">    input = (input || <span class="string">''</span>).trim().replace(<span class="regexp">/\.\d+/</span>, <span class="string">''</span>) <span class="comment">// remove milliseconds</span></span><br><span class="line">      .replace(<span class="regexp">/-/</span>, <span class="string">'/'</span>).replace(<span class="regexp">/-/</span>, <span class="string">'/'</span>)</span><br><span class="line">      .replace(<span class="regexp">/(\d)T(\d)/</span>, <span class="string">'$1 $2'</span>).replace(<span class="regexp">/Z/</span>, <span class="string">' UTC'</span>) <span class="comment">// 2017-2-5T3:57:52Z -&gt; 2017-2-5 3:57:52UTC</span></span><br><span class="line">      .replace(<span class="regexp">/([\+\-]\d\d)\:?(\d\d)/</span>, <span class="string">' $1$2'</span>); <span class="comment">// -04:00 -&gt; -0400</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(input);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// change f into int, remove decimal. Just for code compression</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">toInt</span>(<span class="params">f</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(f);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// format the diff second to *** time ago, with setting locale</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">formatDiff</span>(<span class="params">diff, locale, defaultLocale</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// if locale is not exist, use defaultLocale.</span></span><br><span class="line">    <span class="comment">// if defaultLocale is not exist, use build-in `en`.</span></span><br><span class="line">    <span class="comment">// be sure of no error when locale is not exist.</span></span><br><span class="line">    locale = locales[locale] ? locale : (locales[defaultLocale] ? defaultLocale : <span class="string">'en'</span>);</span><br><span class="line">    <span class="comment">// if (! locales[locale]) locale = defaultLocale;</span></span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>,</span><br><span class="line">      agoin = diff &lt; <span class="number">0</span> ? <span class="number">1</span> : <span class="number">0</span>, <span class="comment">// timein or timeago</span></span><br><span class="line">      total_sec = diff = <span class="built_in">Math</span>.abs(diff);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (; diff &gt;= SEC_ARRAY[i] &amp;&amp; i &lt; SEC_ARRAY_LEN; i++) &#123;</span><br><span class="line">      diff /= SEC_ARRAY[i];</span><br><span class="line">    &#125;</span><br><span class="line">    diff = toInt(diff);</span><br><span class="line">    i *= <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (diff &gt; (i === <span class="number">0</span> ? <span class="number">9</span> : <span class="number">1</span>)) i += <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> locales[locale](diff, i, total_sec)[agoin].replace(<span class="string">'%s'</span>, diff);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// calculate the diff second between date to be formated an now date.</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">diffSec</span>(<span class="params">date, nowDate</span>) </span>&#123;</span><br><span class="line">    nowDate = nowDate ? toDate(nowDate) : <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="keyword">return</span> (nowDate - toDate(date)) / <span class="number">1000</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * nextInterval: calculate the next interval time.</span></span><br><span class="line"><span class="comment">   * - diff: the diff sec between now and date to be formated.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * What's the meaning?</span></span><br><span class="line"><span class="comment">   * diff = 61 then return 59</span></span><br><span class="line"><span class="comment">   * diff = 3601 (an hour + 1 second), then return 3599</span></span><br><span class="line"><span class="comment">   * make the interval with high performace.</span></span><br><span class="line"><span class="comment">  **/</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">nextInterval</span>(<span class="params">diff</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> rst = <span class="number">1</span>, i = <span class="number">0</span>, d = <span class="built_in">Math</span>.abs(diff);</span><br><span class="line">    <span class="keyword">for</span> (; diff &gt;= SEC_ARRAY[i] &amp;&amp; i &lt; SEC_ARRAY_LEN; i++) &#123;</span><br><span class="line">      diff /= SEC_ARRAY[i];</span><br><span class="line">      rst *= SEC_ARRAY[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// return leftSec(d, rst);</span></span><br><span class="line">    d = d % rst;</span><br><span class="line">    d = d ? rst - d : rst;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.ceil(d);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// get the datetime attribute, jQuery and DOM</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getDateAttr</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node.dataset.timeago) <span class="keyword">return</span> node.dataset.timeago; <span class="comment">// data-timeago supported</span></span><br><span class="line">    <span class="keyword">return</span> getAttr(node, ATTR_DATETIME);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getAttr</span>(<span class="params">node, name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node.getAttribute) <span class="keyword">return</span> node.getAttribute(name); <span class="comment">// native</span></span><br><span class="line">    <span class="keyword">if</span>(node.attr) <span class="keyword">return</span> node.attr(name); <span class="comment">// jquery</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">setTidAttr</span>(<span class="params">node, val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node.setAttribute) <span class="keyword">return</span> node.setAttribute(ATTR_DATA_TID, val); <span class="comment">// native</span></span><br><span class="line">    <span class="keyword">if</span>(node.attr) <span class="keyword">return</span> node.attr(ATTR_DATA_TID, val); <span class="comment">// jquery</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getTidFromNode</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> getAttr(node, ATTR_DATA_TID);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * timeago: the function to get `timeago` instance.</span></span><br><span class="line"><span class="comment">   * - nowDate: the relative date, default is new Date().</span></span><br><span class="line"><span class="comment">   * - defaultLocale: the default locale, default is en. if your set it, then the `locale` parameter of format is not needed of you.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * How to use it?</span></span><br><span class="line"><span class="comment">   * var timeagoLib = require('timeago.js');</span></span><br><span class="line"><span class="comment">   * var timeago = timeagoLib(); // all use default.</span></span><br><span class="line"><span class="comment">   * var timeago = timeagoLib('2016-09-10'); // the relative date is 2016-09-10, so the 2016-09-11 will be 1 day ago.</span></span><br><span class="line"><span class="comment">   * var timeago = timeagoLib(null, 'zh_CN'); // set default locale is `zh_CN`.</span></span><br><span class="line"><span class="comment">   * var timeago = timeagoLib('2016-09-10', 'zh_CN'); // the relative date is 2016-09-10, and locale is zh_CN, so the 2016-09-11 will be 1天前.</span></span><br><span class="line"><span class="comment">  **/</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Timeago</span>(<span class="params">nowDate, defaultLocale</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.nowDate = nowDate;</span><br><span class="line">    <span class="comment">// if do not set the defaultLocale, set it with `en`</span></span><br><span class="line">    <span class="keyword">this</span>.defaultLocale = defaultLocale || <span class="string">'en'</span>; <span class="comment">// use default build-in locale</span></span><br><span class="line">    <span class="comment">// for dev test</span></span><br><span class="line">    <span class="comment">// this.nextInterval = nextInterval;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// what the timer will do</span></span><br><span class="line">  Timeago.prototype.doRender = <span class="function"><span class="keyword">function</span>(<span class="params">node, date, locale</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> diff = diffSec(date, <span class="keyword">this</span>.nowDate),</span><br><span class="line">      self = <span class="keyword">this</span>,</span><br><span class="line">      tid;</span><br><span class="line">    <span class="comment">// delete previously assigned timeout's id to node</span></span><br><span class="line">    node.innerHTML = formatDiff(diff, locale, <span class="keyword">this</span>.defaultLocale);</span><br><span class="line">    <span class="comment">// waiting %s seconds, do the next render</span></span><br><span class="line">    timers[tid = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      self.doRender(node, date, locale);</span><br><span class="line">      <span class="keyword">delete</span> timers[tid];</span><br><span class="line">    &#125;, <span class="built_in">Math</span>.min(nextInterval(diff) * <span class="number">1000</span>, <span class="number">0x7FFFFFFF</span>))] = <span class="number">0</span>; <span class="comment">// there is no need to save node in object.</span></span><br><span class="line">    <span class="comment">// set attribute date-tid</span></span><br><span class="line">    setTidAttr(node, tid);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * format: format the date to *** time ago, with setting or default locale</span></span><br><span class="line"><span class="comment">   * - date: the date / string / timestamp to be formated</span></span><br><span class="line"><span class="comment">   * - locale: the formated string's locale name, e.g. en / zh_CN</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * How to use it?</span></span><br><span class="line"><span class="comment">   * var timeago = require('timeago.js')();</span></span><br><span class="line"><span class="comment">   * timeago.format(new Date(), 'pl'); // Date instance</span></span><br><span class="line"><span class="comment">   * timeago.format('2016-09-10', 'fr'); // formated date string</span></span><br><span class="line"><span class="comment">   * timeago.format(1473473400269); // timestamp with ms</span></span><br><span class="line"><span class="comment">  **/</span></span><br><span class="line">  Timeago.prototype.format = <span class="function"><span class="keyword">function</span>(<span class="params">date, locale</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> formatDiff(diffSec(date, <span class="keyword">this</span>.nowDate), locale, <span class="keyword">this</span>.defaultLocale);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * render: render the DOM real-time.</span></span><br><span class="line"><span class="comment">   * - nodes: which nodes will be rendered.</span></span><br><span class="line"><span class="comment">   * - locale: the locale name used to format date.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * How to use it?</span></span><br><span class="line"><span class="comment">   * var timeago = require('timeago.js')();</span></span><br><span class="line"><span class="comment">   * // 1. javascript selector</span></span><br><span class="line"><span class="comment">   * timeago.render(document.querySelectorAll('.need_to_be_rendered'));</span></span><br><span class="line"><span class="comment">   * // 2. use jQuery selector</span></span><br><span class="line"><span class="comment">   * timeago.render($('.need_to_be_rendered'), 'pl');</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * Notice: please be sure the dom has attribute `datetime`.</span></span><br><span class="line"><span class="comment">  **/</span></span><br><span class="line">  Timeago.prototype.render = <span class="function"><span class="keyword">function</span>(<span class="params">nodes, locale</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nodes.length === <span class="literal">undefined</span>) nodes = [nodes];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = nodes.length; i &lt; len; i++) &#123;</span><br><span class="line">      <span class="keyword">this</span>.doRender(nodes[i], getDateAttr(nodes[i]), locale); <span class="comment">// render item</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * setLocale: set the default locale name.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * How to use it?</span></span><br><span class="line"><span class="comment">   * var timeago = require('timeago.js')();</span></span><br><span class="line"><span class="comment">   * timeago.setLocale('fr');</span></span><br><span class="line"><span class="comment">  **/</span></span><br><span class="line">  Timeago.prototype.setLocale = <span class="function"><span class="keyword">function</span>(<span class="params">locale</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.defaultLocale = locale;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * timeago: the function to get `timeago` instance.</span></span><br><span class="line"><span class="comment">   * - nowDate: the relative date, default is new Date().</span></span><br><span class="line"><span class="comment">   * - defaultLocale: the default locale, default is en. if your set it, then the `locale` parameter of format is not needed of you.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * How to use it?</span></span><br><span class="line"><span class="comment">   * var timeagoFactory = require('timeago.js');</span></span><br><span class="line"><span class="comment">   * var timeago = timeagoFactory(); // all use default.</span></span><br><span class="line"><span class="comment">   * var timeago = timeagoFactory('2016-09-10'); // the relative date is 2016-09-10, so the 2016-09-11 will be 1 day ago.</span></span><br><span class="line"><span class="comment">   * var timeago = timeagoFactory(null, 'zh_CN'); // set default locale is `zh_CN`.</span></span><br><span class="line"><span class="comment">   * var timeago = timeagoFactory('2016-09-10', 'zh_CN'); // the relative date is 2016-09-10, and locale is zh_CN, so the 2016-09-11 will be 1天前.</span></span><br><span class="line"><span class="comment">   **/</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">timeagoFactory</span>(<span class="params">nowDate, defaultLocale</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Timeago(nowDate, defaultLocale);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * register: register a new language locale</span></span><br><span class="line"><span class="comment">   * - locale: locale name, e.g. en / zh_CN, notice the standard.</span></span><br><span class="line"><span class="comment">   * - localeFunc: the locale process function</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * How to use it?</span></span><br><span class="line"><span class="comment">   * var timeagoFactory = require('timeago.js');</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * timeagoFactory.register('the locale name', the_locale_func);</span></span><br><span class="line"><span class="comment">   * // or</span></span><br><span class="line"><span class="comment">   * timeagoFactory.register('pl', require('timeago.js/locales/pl'));</span></span><br><span class="line"><span class="comment">   **/</span></span><br><span class="line">  timeagoFactory.register = <span class="function"><span class="keyword">function</span>(<span class="params">locale, localeFunc</span>) </span>&#123;</span><br><span class="line">    locales[locale] = localeFunc;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * cancel: cancels one or all the timers which are doing real-time render.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * How to use it?</span></span><br><span class="line"><span class="comment">   * For canceling all the timers:</span></span><br><span class="line"><span class="comment">   * var timeagoFactory = require('timeago.js');</span></span><br><span class="line"><span class="comment">   * var timeago = timeagoFactory();</span></span><br><span class="line"><span class="comment">   * timeago.render(document.querySelectorAll('.need_to_be_rendered'));</span></span><br><span class="line"><span class="comment">   * timeagoFactory.cancel(); // will stop all the timers, stop render in real time.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * For canceling single timer on specific node:</span></span><br><span class="line"><span class="comment">   * var timeagoFactory = require('timeago.js');</span></span><br><span class="line"><span class="comment">   * var timeago = timeagoFactory();</span></span><br><span class="line"><span class="comment">   * var nodes = document.querySelectorAll('.need_to_be_rendered');</span></span><br><span class="line"><span class="comment">   * timeago.render(nodes);</span></span><br><span class="line"><span class="comment">   * timeagoFactory.cancel(nodes[0]); // will clear a timer attached to the first node, stop render in real time.</span></span><br><span class="line"><span class="comment">   **/</span></span><br><span class="line">  timeagoFactory.cancel = <span class="function"><span class="keyword">function</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tid;</span><br><span class="line">    <span class="comment">// assigning in if statement to save space</span></span><br><span class="line">    <span class="keyword">if</span> (node) &#123;</span><br><span class="line">      tid = getTidFromNode(node);</span><br><span class="line">      <span class="keyword">if</span> (tid) &#123;</span><br><span class="line">        clearTimeout(tid);</span><br><span class="line">        <span class="keyword">delete</span> timers[tid];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">for</span> (tid <span class="keyword">in</span> timers) clearTimeout(tid);</span><br><span class="line">      timers = &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> timeagoFactory;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赏一个呗！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/weChatPay.png" alt="qhx0807 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/aliPay.jpg" alt="qhx0807 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/07/axios/" rel="next" title="使用axios笔记">
+                <i class="fa fa-chevron-left"></i> 使用axios笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/14/loading/" rel="prev" title="收藏几个漂亮的loading效果">
+                收藏几个漂亮的loading效果 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://os70o8m36.bkt.clouddn.com/avatar.jpg"
+                alt="qhx0807" />
+            
+              <p class="site-author-name" itemprop="name">qhx0807</p>
+              <p class="site-description motion-element" itemprop="description">Life is not always a bed of roses</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:qixing7997@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/qhx0807" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/hai-mian-bao-bao-bao-bao-bao-bao/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=820240134&site=qq&menu=yes" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#引入"><span class="nav-number">1.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DOM"><span class="nav-number">2.</span> <span class="nav-text">DOM</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JS"><span class="nav-number">3.</span> <span class="nav-text">JS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他使用方式"><span class="nav-number">4.</span> <span class="nav-text">其他使用方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#源码-250lins"><span class="nav-number">5.</span> <span class="nav-text">源码(250lins)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qhx0807</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytqEEvhP';
+      var conf = '6cdcae8a16ff78f45928bccdf0f46756';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("KLj2tXVwRI7ikzBVW3xjorBH-gzGzoHsz", "W3MneCK5tUQztLGOFC3qAiUB");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
