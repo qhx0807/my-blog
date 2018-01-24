@@ -80,5 +80,4 @@ deploy:
   type: git
   repo: https://github.com/qhx0807/my-blog.git
   branch: gh-pages
-  message: [message]
 
