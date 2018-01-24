@@ -29,7 +29,7 @@ npm install -g github-webhook-handler
 ```javascript
 var http = require('http')
 var createHandler = require('github-webhook-handler')
-var handler = createHandler({ path: '**服务器上项目文件目录**', secret: '**Github上设置的Secret**' }) 
+var handler = createHandler({ path: '/', secret: '**Github上设置的Secret**' }) 
 
 function run_cmd(cmd, args, callback) {
   var spawn = require('child_process').spawn;
@@ -63,14 +63,14 @@ handler.on('push', function (event) {
 ```bash
 #!/bin/bash
 
-LOG_FILE="./blog_deploy.log"
+LOG_FILE="E:\my-blog/blog_deploy.log"  # 这里最好是绝对路径^_^
 
 date >> "$LOG_FILE"
 echo "Start deployment" >>"$LOG_FILE"
 cd ../blog
 echo "pulling source code..." >> "$LOG_FILE"
-git checkout gh-pages
-git pull origin gh-pages
+git checkout master
+git pull origin master
 echo "Finished." >>"$LOG_FILE"
 echo >> $LOG_FILE
 ```
@@ -79,5 +79,20 @@ echo >> $LOG_FILE
 
 ```bash
 node deploy.js
+```
+
+或者使用 `supervisor` 管理进程
+
+```bash
+supervisor deploy.js
+```
+
+
+#### 服务端项目
+
+把Github上的项目clone下来，注意与bash中的目录正确
+
+```bash
+git clone https://github.com/xxxxxx/blog.git
 ```
 
