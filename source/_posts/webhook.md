@@ -1,5 +1,5 @@
 ---
-title: webhook 自动部署项目
+title: 使用Github Webhook 自动部署项目
 date: 2018-01-5 11:18:45
 tags: [webhook, git, github]
 categories: [git]
@@ -12,6 +12,8 @@ github支持Webhooks及大量的第三方服务，可以很好得对repo的push�
 #### 1. 对指定repo添加webhook，指向服务器上的接口。
 
 ![webhook](webhook.png)
+
+<!-- more -->
 
 - Payload URL: 服务器地址，接收POST请求
 - Content type： 默认
