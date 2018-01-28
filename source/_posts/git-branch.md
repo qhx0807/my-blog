@@ -92,7 +92,7 @@ git push  # 提交到dev远程分支
 6. 删除分支
 
 ```bash
-git push origin :dev  # 删除远程dev分支，危险命令哦
+git push origin :dev  # 删除远程dev分支，(push一个空的分支)
 # 下面两条是删除本地分支
 git checkout master  # 切换到master分支
 git branch -d dev  # 删除本地dev分支
