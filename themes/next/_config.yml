@@ -102,6 +102,7 @@ menu:
   photos: /photos || image
   birthday: /birthday || birthday-cake
   about: /about/ || user
+  collection: /collection/ || heart
 # Enable/Disable menu icons.
 menu_icons:
   enable: true
