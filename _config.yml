@@ -82,3 +82,9 @@ deploy:
   repo: https://github.com/qhx0807/blog-site.git
   branch: master
 
+search:
+  path: search.xml
+  field: all
+  format: html
+  limit: 10000
+
