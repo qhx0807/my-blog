@@ -2,7 +2,7 @@
 title: es6学习笔记1(基础)
 date: 2017-09-14 15:12:12
 tags: [javascript, es6]
-categories: 前端
+categories: javascript
 ---
 ECMAScript 6（简称ES6）是JavaScript语言的下一代标准。因为当前版本的ES6是在2015年发布的，所以又称ECMAScript 2015。
 

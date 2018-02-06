@@ -1,8 +1,8 @@
 ---
 title: timeago.js 使用笔记&源码阅读分析
 date: 2017-06-09 21:52:38
-tags: javascript
-categories: 前端
+tags: [timeago,javascript]
+categories: javascript
 ---
 > timeago.js [官方文档](https://github.com/mzabriskie/axios/) 是一个非常简洁、轻量级、不到 2kb 的很简洁的 Javascript 库，用来将 datetime 时间转化成类似于*** 时间前的描述字符串，例如：“3小时前”。
 

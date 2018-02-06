@@ -2,7 +2,7 @@
 title: 检测网页过期(PC端)
 date: 2017-09-12 09:26:13
 tags: [javascript,html5]
-categories: 前端
+categories: javascript
 ---
 
 用于检测用户长时间未操作，页面过期，监听鼠标键盘事件。

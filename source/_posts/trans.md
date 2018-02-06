@@ -1,8 +1,8 @@
 ---
 title: 将金额转换为大写人民币形式
 date: 2017-05-22 23:28:25
-tags: javascript
-categories: 前端
+tags: [javascript,money]
+categories: javascript
 ---
 
 最近在项目中处理收费划价的事情，遇到要把数字金额装换为大写的金额。如￥150.00 => 壹佰伍拾元整。把这个方法记录下来，说不定以后还会用到。

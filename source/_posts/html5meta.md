@@ -1,8 +1,8 @@
 ---
 title: HTML5移动端自适应meta：flexible.js
 date: 2017-06-20 21:55:40
-tags: [javascript,html5]
-categories: 前端
+tags: [javascript,html5,metainfo]
+categories: html5
 ---
 根据屏幕分辨率自动设置 `meta` 标签，在 `<html>` 上设置基准字体大小。这就是 `rem` 中的 `r`
 

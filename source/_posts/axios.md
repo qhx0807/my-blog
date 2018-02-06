@@ -1,8 +1,8 @@
 ---
 title: 使用axios笔记
 date: 2017-06-07 22:28:11
-tags: [javascript,vue]
-categories: 前端
+tags: [javascript,vue,axios]
+categories: javascript
 ---
 
 vue2.0中官方推荐的HTTP请求插件：axios. [官方文档](https://github.com/mzabriskie/axios/)

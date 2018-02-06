@@ -1,8 +1,8 @@
 ---
 title: canvas粒子背景效果
 date: 2017-05-28 01:00:30
-tags: javascript
-categories: 前端
+tags: [javascript, canvas]
+categories: canvas
 ---
 
 HTML5 canvas粒子背景效果

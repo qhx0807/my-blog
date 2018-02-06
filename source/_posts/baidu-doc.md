@@ -2,7 +2,7 @@
 title: baidu-doc百度云文档服务
 date: 2017-09-02 09:30:50
 tags: [javascript,html5]
-categories: 前端
+categories: javascript
 ---
 
 #### 百度云文档服务，在线查看各种文档，移动端友好。

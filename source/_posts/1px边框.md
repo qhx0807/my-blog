@@ -1,8 +1,8 @@
 ---
 title: 手机端1px边框
 date: 2017-04-05 20:36:00
-tags: css
-categories: 前端
+tags: [css, html5]
+categories: css
 ---
 在多数移动端上css中的1px并不等于设备的1px。不同的手机有不同的像素密度。Window.devicePixelRatio。
 

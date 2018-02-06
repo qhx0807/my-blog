@@ -2,7 +2,7 @@
 title: 生日快乐
 date: 2017-11-11 00:00:00
 tags: 生日快乐
-categories: ^_^
+categories: 随记
 ---
 
 生日快乐，天天开心。23岁快乐。

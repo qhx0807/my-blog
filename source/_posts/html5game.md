@@ -2,7 +2,7 @@
 title: html5game
 date: 2017-06-30 21:39:40
 tags: [javascript,html5,css,velocity]
-categories: 前端
+categories: javascript
 ---
 需求：实现一个微信公众号营销活动H5接金币小游戏，类似于大富翁。 [演示地址](http://qhxing.site/game/game.html)
 
