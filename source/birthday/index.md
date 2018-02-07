@@ -21,7 +21,7 @@ date: 2017-07-17 23:10:24
 22岁最后一天，给你听这首歌`《22》`
 
 ###### 22 - Taylor Swift.
-<video src="http://qhxing.site/video/22.mp4" loop="loop" controls="controls" >
+<video src="http://os70o8m36.bkt.clouddn.com/22.mp4" width="606" loop="loop" controls="controls" >
     your browser does not support the video tag
 </video>
 <br>
