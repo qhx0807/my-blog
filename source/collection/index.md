@@ -16,4 +16,4 @@
     3.`http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=820240134`
     4.`http://qlogo1.store.qq.com/qzone/820240134/820240134/100`
 
-- ...
+- [利用谷歌云平台GoogleCloudPlatform搭建vps -- facebook](https://www.facebook.com/notes/%E6%8A%80%E5%A4%9A%E4%B8%8D%E5%A3%93%E8%BA%AB/%E5%88%A9%E7%94%A8%E8%B0%B7%E6%AD%8C%E4%BA%91%E5%B9%B3%E5%8F%B0googlecloudplatform%E6%90%AD%E5%BB%BAvps/1447411805367407/)
