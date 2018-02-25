@@ -78,9 +78,10 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-##  repo: https://github.com/qhx0807/my-blog.git
   repo: https://github.com/qhx0807/blog-site.git
   branch: master
+  name: qhx0807
+  email: 820240134@qq.com
 
 search:
   path: search.xml
