@@ -8,9 +8,9 @@ date: 2017-07-17 23:10:24
 ![work](http://os70o8m36.bkt.clouddn.com/work.gif)
 
 
-<center>生日快乐</center>
+<!-- <center>生日快乐</center>
 
-![生日快乐](http://os70o8m36.bkt.clouddn.com/IMG_20170921_195143.jpg)
+![生日快乐](http://os70o8m36.bkt.clouddn.com/IMG_20170921_195143.jpg) -->
 
 
 <center>生日快乐</center>
@@ -18,7 +18,7 @@ date: 2017-07-17 23:10:24
 ![生日快乐](http://os70o8m36.bkt.clouddn.com/IMG_20170921_195040.jpg)
 
 
-<center>不知道怎么倒了，手机的问题</center>
+<center>生日快乐</center>
 
 ![生日快乐](http://os70o8m36.bkt.clouddn.com/IMG_20170921_195312_HDR.jpg)
 
@@ -254,3 +254,9 @@ date: 2017-07-17 23:10:24
 
 ![吃西瓜](http://os70o8m36.bkt.clouddn.com/%E8%A5%BF%E7%93%9C.png)
 
+
+<style>
+p>a>img{
+    height: auto;
+}
+</style>
