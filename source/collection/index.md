@@ -1,6 +1,6 @@
 - [转:blog.csdn js获取ip地址的方法](http://blog.csdn.net/enweitech/article/details/52084346 "JavaScript获取IP地址的方法小结") -- `http://ip.chinaz.com/getip.aspx`
 
-- [占位图](https://placeholder.com/ "placeholder") -- `http://placeholder.com/350x150`
+- [占位图](https://placeholder.com/ "placeholder") -- `http://via.placeholder.com/350x150`
 
 - [JSONPlaceholder](https://jsonplaceholder.typicode.com/ "jsonplaceholder") -- `GET https://jsonplaceholder.typicode.com/posts`
 
