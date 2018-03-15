@@ -23,3 +23,5 @@
 - [css:Line-height 和 vertical-align 详解](http://www.zcfy.cc/article/deep-dive-css-font-metrics-line-height-and-vertical-align-vincent-de-oliveira-2616.html#user-evaluation-modal)
 
 - HTML `<head>` 生成 不同浏览器/移动端/SEO -- [html-head-generator](http://work.dimpurr.com/lab/html-head-generator/)
+
+- [QQ推广 网页发起QQ聊天](http://shang.qq.com/v3/widget.html)
