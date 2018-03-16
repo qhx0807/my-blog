@@ -25,3 +25,5 @@
 - HTML `<head>` 生成 不同浏览器/移动端/SEO -- [html-head-generator](http://work.dimpurr.com/lab/html-head-generator/)
 
 - [QQ推广 网页发起QQ聊天](http://shang.qq.com/v3/widget.html)
+
+- [正则表达式 解读](https://regexper.com/#%2F%5Cw%5Cd%5Cs%2Fig)
