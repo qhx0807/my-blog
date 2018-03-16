@@ -1,6 +1,14 @@
 - [转:blog.csdn js获取ip地址的方法](http://blog.csdn.net/enweitech/article/details/52084346 "JavaScript获取IP地址的方法小结") -- `http://ip.chinaz.com/getip.aspx`
 
-- [占位图](https://placeholder.com/ "placeholder") -- `http://via.placeholder.com/350x150`
+- [占位图](https://placeholder.com/ "placeholder")
+    1.`http://via.placeholder.com/350x150`
+    2.`http://iph.href.lu/150x150?text=hello`
+    <small>
+        fg: 设置文字颜色, fg没有指定的时候，自动根据bg生成
+        bg: 设置图片背景色
+        text: 设置文字内容
+        [width]x[height]: 设置图片的宽高; 最大宽度2048，最大高度2048，如果超过返回404
+    </small>
 
 - [JSONPlaceholder](https://jsonplaceholder.typicode.com/ "jsonplaceholder") -- `GET https://jsonplaceholder.typicode.com/posts`
 
