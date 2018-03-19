@@ -35,3 +35,10 @@
 - [QQ推广 网页发起QQ聊天](http://shang.qq.com/v3/widget.html)
 
 - [正则表达式 解读](https://regexper.com/#%2F%5Cw%5Cd%5Cs%2Fig)
+
+- [必应每日壁纸](http://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1) `http://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1` 
+    1.`format:  xml 或者 js, 为js时输出json`
+    2.`idx: 不存在或者等于0时，输出当天的图片,-1为已经预备用于明天显示的信息，1则为昨天的图片，idx最多获取到前16天的图片信息。`
+    3.`n: 这是输出信息的数量。比如n=1，即为1条，以此类推，至多输出8条。`
+    4.`http://s.cn.bing.net/ + 图片地址进行访问`
+    5.`通过代理接口：https://bird.ioliu.cn/v1?url= 支持跨域。[https://bird.ioliu.cn/v1?url=http://www.bing.com/HPImageArchive.aspx?format=js&idx=1&n=1](https://bird.ioliu.cn/v1?url=http://www.bing.com/HPImageArchive.aspx?format=js&idx=1&n=1)`
