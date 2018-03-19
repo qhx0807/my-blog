@@ -100,8 +100,8 @@ menu:
   # sitemap: /sitemap.xml || sitemap
   # commonweal: /404/ || heartbeat
   photos: /photos || image
-  birthday: /birthday || birthday-cake
-  about: /about/ || user
+  # birthday: /birthday || birthday-cake
+  # about: /about/ || user
   collection: /collection/ || heart
   books: /books/ || book
 # Enable/Disable menu icons.

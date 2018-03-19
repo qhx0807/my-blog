@@ -13,17 +13,17 @@ date: 2017-07-17 23:10:24
 ![生日快乐](http://os70o8m36.bkt.clouddn.com/IMG_20170921_195143.jpg) -->
 
 
-<center>生日快乐</center>
+<!-- <center>生日快乐</center>
 
 ![生日快乐](http://os70o8m36.bkt.clouddn.com/IMG_20170921_195040.jpg)
 
 
 <center>生日快乐</center>
 
-![生日快乐](http://os70o8m36.bkt.clouddn.com/IMG_20170921_195312_HDR.jpg)
+![生日快乐](http://os70o8m36.bkt.clouddn.com/IMG_20170921_195312_HDR.jpg) -->
 
 
-
+<!-- 
 <center>手 恐怖</center>
 
 ![手 恐怖](http://os70o8m36.bkt.clouddn.com/IMG_0492.JPG)
@@ -253,7 +253,7 @@ date: 2017-07-17 23:10:24
 <center>吃瓜群众</center>
 
 ![吃西瓜](http://os70o8m36.bkt.clouddn.com/%E8%A5%BF%E7%93%9C.png)
-
+ -->
 
 <style>
 p>a>img{
