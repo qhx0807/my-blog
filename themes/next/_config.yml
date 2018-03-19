@@ -132,7 +132,7 @@ scheme: Pisces
 social:
   #GitHub: https://github.com/yourname || github
   E-Mail: mailto:qixing7997@gmail.com || envelope
-  #Google: https://plus.google.com/yourname || google
+  Google: https://plus.google.com/u/0/ || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
   #VK Group: https://vk.com/yourname || vk
@@ -142,7 +142,7 @@ social:
   #Skype: skype:yourname?call|chat || skype
   GitHub: https://github.com/qhx0807 || github
   # 微博: http://www.weibo.com/1751080927 || weibo
-  知乎: https://www.zhihu.com/people/hai-mian-bao-bao-bao-bao-bao-bao/activities
+  # 知乎: https://www.zhihu.com/people/hai-mian-bao-bao-bao-bao-bao-bao/activities
   QQ: http://wpa.qq.com/msgrd?v=3&uin=820240134&site=qq&menu=yes || qq
 
 social_icons:
