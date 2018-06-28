@@ -42,3 +42,8 @@
     3.`n: 这是输出信息的数量。比如n=1，即为1条，以此类推，至多输出8条。`
     4.`http://s.cn.bing.net/ + 图片地址进行访问`
     5.`通过代理接口：https://bird.ioliu.cn/v1?url= 支持跨域。[https://bird.ioliu.cn/v1?url=http://www.bing.com/HPImageArchive.aspx?format=js&idx=1&n=1](https://bird.ioliu.cn/v1?url=http://www.bing.com/HPImageArchive.aspx?format=js&idx=1&n=1)`
+
+- [MySql按周，按月，按日分组统计数据](https://blog.csdn.net/lqclh502/article/details/50157483)
+    ```sql
+        select DATE_FORMAT(createtime,'%Y-%m-%d') days,count(id) count from t_order_fictitious group by days
+    ```
