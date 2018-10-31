@@ -43,3 +43,8 @@ AND of.paytime < '2018-08-01'
 GROUP BY
 	ode.areaid
 ```
+
+```sql
+<!-- 替换回车换行为空字符串 -->
+REPLACE(REPLACE(`desc`, CHAR(10),''), CHAR(13),'')
+```
