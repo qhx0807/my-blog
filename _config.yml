@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: qhx0807
-subtitle: where amazing happens
-description: Life is not always a bed of roses 
+title: qhx0807 blog
+subtitle: my blog site - qhx0807
+description: 心中有梦
 author: qhx0807
-language: zh-Hans
+language: zh-CN
 timezone: Asia/Chongqing
 
 # URL
@@ -78,7 +78,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/qhx0807/blog-site.git
+  repo: https://github.com/qhx0807/qhx0807.github.io.git
   branch: master
   name: qhx0807
   email: 820240134@qq.com
