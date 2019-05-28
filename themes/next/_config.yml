@@ -161,7 +161,7 @@ menu:
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
   home: / || home
-  categories: /categories/ || th
+  # categories: /categories/ || th
   archives: /archives/ || archive
   tags: /tags/ || tags
   # schedule: /schedule/ || calendar
@@ -172,7 +172,7 @@ menu:
   collection: /collection/ || heart
   books: /books/ || book
   laboratory: /laboratory/ || flask
-  about: /about/ || user
+  # about: /about/ || user
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
