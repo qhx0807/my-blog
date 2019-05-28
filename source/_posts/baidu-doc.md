@@ -7,8 +7,8 @@ categories: javascript
 
 #### 百度云文档服务，在线查看各种文档，移动端友好。
 
-![](1.jpg)
-![](2.jpg)
+![](http://cdn.cqyyy.cn/pic/20190528152517.jpg)
+![](http://cdn.cqyyy.cn/pic/20190528152516.jpg)
 
 ```html
 <!DOCTYPE html>

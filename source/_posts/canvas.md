@@ -7,7 +7,7 @@ categories: canvas
 
 HTML5 canvas粒子背景效果
 
-![](GIF.gif)
+![](http://cdn.cqyyy.cn/pic/20190528152159.gif)
 
 <!-- more -->
 

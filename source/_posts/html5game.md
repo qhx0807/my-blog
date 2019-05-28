@@ -7,7 +7,7 @@ categories: javascript
 需求：实现一个微信公众号营销活动H5接金币小游戏，类似于大富翁。 [演示地址](http://qhxing.site/game/game.html)
 
 启动页：
-![](index.jpg)
+![](http://cdn.cqyyy.cn/pic/20190528152933.jpg)
 
 <!-- more -->
 
@@ -25,7 +25,7 @@ categories: javascript
 6. 物体下落到屏幕下方后一定要移除 
 7. 计时器、随机数、touch等...
 
-![](design.jpg)
+![](http://cdn.cqyyy.cn/pic/20190528152952.jpg)
 
 #### 选择实现动画的方式
 
@@ -72,7 +72,7 @@ categories: javascript
 
 #### 碰撞检测
 
-![](impact.jpg)
+![](http://cdn.cqyyy.cn/pic/20190528153015.jpg)
 
 如图所示，碰不上的情况只有四种，其他情况都是发生了碰撞。
 
@@ -142,7 +142,7 @@ var bindEvents = function () {
     document.querySelector("#game").addEventListener('touchend', touchendFoo, false);
 }
 ```
-![](down.png)
+![](http://cdn.cqyyy.cn/pic/20190528153034.png)
 在微信中，下拉网页会出现上面的情况，如果不想看见这个东西，可以使用：
 
 ```javascript

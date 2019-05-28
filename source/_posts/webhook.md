@@ -11,7 +11,7 @@ github支持Webhooks及大量的第三方服务，可以很好得对repo的push�
 
 #### 1. 对指定repo添加webhook，指向服务器上的接口。
 
-![webhook](webhook.png)
+![webhook](http://cdn.cqyyy.cn/pic/20190528152847.png)
 
 <!-- more -->
 
