@@ -32,3 +32,11 @@ comments: false
 `Excel` 和 `json` 相互装换，方便的小工具。使用 `React`, 在线链接：http://e2j.ioleo.cn/
 
 ![](http://cdn.cqyyy.cn/pic/20190528164923.png)
+
+#### 七牛api
+
+> repo: `https://github.com/qhx0807/qiniu-manager`
+
+七牛云资源管理 Api, 根据官方文档整理.
+
+技术栈： `thinkjs`, `mysql`
