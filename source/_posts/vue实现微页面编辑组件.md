@@ -117,4 +117,68 @@ https://cn.vuejs.org/v2/guide/components-custom-events.html#%E8%87%AA%E5%AE%9A%E
 
 5. `$listeners` 垮组件地传递事件，就不用在每一层上面再接收再发射。
 https://cn.vuejs.org/v2/api/#vm-listeners
-  
+
+6. 父组件动态传递 props，子组件接下来希望将其作为一个本地的 prop 数据来使用
+
+https://cn.vuejs.org/v2/guide/components-props.html#%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81
+
+```html
+<!-- 组件A -->
+<template>
+  <div>
+    <Test :parentValue="arr"></Test>
+    <Button @click="cover">cover</Button>
+    <Button @click="push">push</Button>
+  </div>
+</template>
+<script>
+import B from './B'
+export default {
+  name: 'A',
+  components: {
+    B
+  },
+  data () {
+    return {
+      arr: [1, 2, 3]
+    }
+  },
+  methods: {
+    // 父组件想更改传给 B 的 props 
+    cover () {
+      this.arr = [0, 0, 0] // 这种方法是不行的
+    },
+    push () {
+      this.arr.push(233) // 可以！
+    }
+  }
+}
+</script>
+```
+
+```html
+<!-- 组件B -->
+<template>
+  <div>
+    <p v-for="(item, index) in arr">{{item}}</p>
+  </div>
+</template>
+<script>
+export default {
+  props: {
+    parentValue: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data () {
+    return {
+      arr: []
+    }
+  },
+  created () {
+    this.arr = this.parentValue
+  }
+}
+</script>
+```
