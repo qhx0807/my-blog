@@ -2,6 +2,20 @@
 comments: false
 ---
 
+#### VScode扩展：Staticfile CDN
+
+> repo: `https://github.com/qhx0807/vscode-staticfile-cdn`
+
+查找获取js库的Staticfile CDN链接. https://marketplace.visualstudio.com/items?itemName=qhx0807.staticfile-cdn
+
+![](http://cdn.cqyyy.cn/pic/20190722113926.gif)
+
+#### 项目文件目录结构生成命令行工具
+
+> repo: `https://www.npmjs.com/package/file-tree-generator`
+
+以树形结构显示文件目录结构，它非常适合给别人介绍文件目录的组成框架。默认忽略 `node_modules` 和 `.git`
+
 #### 获取Bing每日壁纸
 
 > repo: `https://github.com/qhx0807/bing`
