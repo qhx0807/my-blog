@@ -1,6 +1,6 @@
 ---
 title: 使用新的Linux系统遇到的问题
-date: 2017-09-01 10:39:40
+date: 2019-08-07 10:39:40
 categories: linux
 ---
 
