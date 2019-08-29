@@ -1,10 +1,18 @@
 ---
-title: 使用新的Linux系统遇到的问题
+title: 使用新的Linux主机遇到的问题
 date: 2019-08-07 10:39:40
 categories: linux
 ---
 
 系统 linux centos 6.3
+
+#### wget: command not found
+
+没有安装wget软件包，一般linux最小化安装时，wget不会默认被安装。
+
+```bash
+yum -y install wget
+```
 
 #### `Cannot find a valid baseurl for repo: base`
 
@@ -84,3 +92,56 @@ service network restart
 yum clean all
 yum install 包名
 ```
+
+#### git: command not found & git 版本低
+
+安装git
+
+```bash
+yum install git -y
+```
+
+一般情况下 `yum` 安装的版本较低(1.7), 想要升级 `git` 版本
+
+1. 安装依赖
+
+```bash
+yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
+yum install  gcc perl-ExtUtils-MakeMaker
+```
+
+2. 卸载旧版本
+
+```bash
+git --version
+# git version 1.7.1
+
+yum remove git
+```
+
+3. 下载git新版本
+
+```bash
+cd /usr/src
+wget https://www.kernel.org/pub/software/scm/git/git-2.1.2.tar.gz
+tar xzf git-2.1.2.tar.gz
+```
+
+4. 安装git并添加到环境变量中
+
+```bash
+cd git-2.1.2
+make prefix=/usr/local/git all
+make prefix=/usr/local/git install
+echo "export PATH=$PATH:/usr/local/git/bin" >> /etc/bashrc
+source /etc/bashrc
+```
+
+5. 查看版本号
+
+```bash
+git --version
+# git version 2.1.2
+```
+
+
