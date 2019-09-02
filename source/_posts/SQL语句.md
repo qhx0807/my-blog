@@ -1,5 +1,5 @@
 ---
-title: 一个前端收藏SQL语句
+title: SQL语句
 date: 2018-07-22 13:28:25
 tags: [sql]
 categories: sql
