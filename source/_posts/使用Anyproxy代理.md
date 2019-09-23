@@ -5,7 +5,7 @@ tags: [anyproxy]
 categories: 代理
 ---
 
-https://github.com/alibaba/anyproxy/tree/master/docs-src/cn
+中文文档：https://github.com/alibaba/anyproxy/tree/master/docs-src/cn
 
 #### 安装 `Anyproxy`
 
