@@ -4,6 +4,7 @@ date: 2019-06-30 22:54:22
 tags: [javascript]
 categories: javascript
 ---
+
 这三个方法都是为了改变某个函数运行时的上下文（context）而存在的，换句话说，就是为了改变函数体内部 this 的指向。
 
 在 ES5 中，其实 `this` 的指向，始终坚持一个原理：**`this` 永远指向最后调用它的那个对象**。
