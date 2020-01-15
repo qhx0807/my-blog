@@ -69,8 +69,8 @@ service network restart
 #### yum安装时出现：Cannot retrieve metalink for repository: epel. Please verify its path and try again
 
 1. 打开 `/etc/yum.repos.d/epel.repo`
-
-2. 将 
+    `vi /etc/yum.repos.d/epel.repo`, 按键 `i` 进入编辑模式，修改文件，按 `ESC` 进入 command 模式， 输入：`:wq` 保存退出。
+2. 将
 
 ```bash
     [epel]
