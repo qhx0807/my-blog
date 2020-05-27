@@ -105,3 +105,9 @@ deploy:
   branch: master
   name: qhx0807
   email: 820240134@qq.com
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
